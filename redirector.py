@@ -1,4 +1,4 @@
-'''
+"""
 URL Redirection
 
 Summary:
@@ -23,9 +23,7 @@ HTTP/1.0 303 See Other
 Server: BaseHTTP/0.3 Python/2.7.5
 Date: Wed, 19 Apr 2017 20:06:22 GMT
 Location: http://www.google.com
-
-
-'''
+"""
 
 import BaseHTTPServer
 import time
@@ -37,11 +35,26 @@ PORT_NUMBER = 5000
 
 class RedirectHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_HEAD(s):
-        s.send_response(200)
-        # s.send_header("Location", url)
+        """Sends only headers when HEAD is requested
+
+        Args:
+            None:
+
+        Returns:
+            None
+        """
         s.end_headers()
 
     def do_GET(s):
+        """GET request from getting URL Redirection with return status code
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        """
         print s.path
         try:
             temp = str(s.path)
